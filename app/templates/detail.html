@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block contenu %}
+<h2>Incident n°{{ incident.id }} : {{ incident.titre }}</h2>
+<p><b>Description :</b> {{ incident.description }}</p>
+<p><b>Lieu :</b> {{ incident.lieu }}</p>
+<p><b>Priorité :</b> {{ incident.priorite }}</p>
+<p><b>Statut :</b> {{ incident.statut }}</p>
+
+<form method="post" action="{{ url_for('incidents.modifier_statut', incident_id=incident.id) }}">
+  <select name="statut">
+    {% for s in statuts %}
+    <option {% if s == incident.statut %}selected{% endif %}>{{ s }}</option>
+    {% endfor %}
+  </select>
+  <button type="submit">Modifier le statut</button>
+</form>
+
+<form method="post" action="{{ url_for('incidents.supprimer', incident_id=incident.id) }}">
+  <button type="submit">Supprimer</button>
+</form>
+{% endblock %}
