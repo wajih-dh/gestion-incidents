@@ -1,18 +1,26 @@
 {% extends "base.html" %}
 {% block contenu %}
-<h2>Liste des incidents</h2>
-{% if incidents %}
-<table>
-  <tr><th>ID</th><th>Titre</th><th>Lieu</th><th>Priorité</th><th>Statut</th><th></th></tr>
-  {% for i in incidents %}
-  <tr>
-    <td>{{ i.id }}</td><td>{{ i.titre }}</td><td>{{ i.lieu }}</td>
-    <td>{{ i.priorite }}</td><td>{{ i.statut }}</td>
-    <td><a href="{{ url_for('incidents.detail', incident_id=i.id) }}">Détails</a></td>
-  </tr>
-  {% endfor %}
-</table>
-{% else %}
-<p>Aucun incident pour le moment.</p>
-{% endif %}
+<div class="carte">
+  <div class="barre">
+    <h2>Liste des incidents</h2>
+    <a class="btn" href="{{ url_for('incidents.ajouter') }}">+ Nouvel incident</a>
+  </div>
+  {% if incidents %}
+  <table>
+    <tr><th>ID</th><th>Titre</th><th>Lieu</th><th>Priorité</th><th>Statut</th><th></th></tr>
+    {% for i in incidents %}
+    <tr>
+      <td>{{ i.id }}</td>
+      <td>{{ i.titre }}</td>
+      <td>{{ i.lieu }}</td>
+      <td><span class="badge" data-v="{{ i.priorite }}">{{ i.priorite }}</span></td>
+      <td><span class="badge" data-v="{{ i.statut }}">{{ i.statut }}</span></td>
+      <td><a class="lien" href="{{ url_for('incidents.detail', incident_id=i.id) }}">Détails</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="vide">Aucun incident pour le moment.</p>
+  {% endif %}
+</div>
 {% endblock %}
