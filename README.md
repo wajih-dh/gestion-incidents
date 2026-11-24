@@ -9,3 +9,5 @@ des étudiants et enseignants.
 - Consulter le détail d'un incident
 - Modifier le statut (Nouveau, En cours, Résolu)
 - Supprimer un incident
+## Tests
+Les tests se lancent avec: pytest -v
