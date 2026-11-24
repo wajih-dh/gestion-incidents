@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    image: gestion-incidents:compose
+    container_name: gestion-incidents-web
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    volumes:
+      - incidents-data:/app/data
+
+volumes:
+  incidents-data:
