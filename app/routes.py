@@ -72,4 +72,4 @@ def supprimer(incident_id):
 
 @bp.route("/health")
 def health():
-    return {"status": "OK"}
+    return {"status": "ERROR"}
