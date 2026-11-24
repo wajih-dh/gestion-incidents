@@ -1,0 +1,12 @@
+services:
+  web:
+    image: ghcr.io/wajih-dh/gestion-incidents:latest
+    container_name: gestion-incidents-prod
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    volumes:
+      - incidents-prod-data:/app/data
+
+volumes:
+  incidents-prod-data:  
